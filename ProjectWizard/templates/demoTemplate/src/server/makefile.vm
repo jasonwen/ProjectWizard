@@ -1,0 +1,39 @@
+LINUX_ENV:=$(shell getconf LONG_BIT)
+CC :=gcc
+CXX:=g++
+CFLAGS:= -g -Wall
+
+ifeq ($(LINUX_ENV), 64)
+#64 bit
+INCLUDE+=
+else
+#32 bit
+INCLUDE+=
+endif
+
+INCLUDE += 	   
+LIB +=  
+ 
+BIN :=${projectName}       
+        
+###################################################################
+
+SOURCES :=$(wildcard *.c *.cpp)
+OBJS :=$(patsubst %.c, %.o , $(patsubst %.cpp,%.o ,$(SOURCES)))
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c  $< -o $@ $(INCLUDE)
+
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -c  $< -o $@ $(INCLUDE)
+
+all:$(BIN)
+
+$(BIN):$(OBJS)
+
+	#$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(LIB) -o  $(BIN)
+        
+	$(CXX) $(CFLAGS) $(OBJS) $(INCLUDE) $(LIB) -o  $(BIN)
+        
+clean:
+	rm -rf *.o $(BIN)

@@ -1,0 +1,16 @@
+#请在下面增加要编译的文件夹，注意文件夹下必须有makefile
+#且makefile必须有all和clean标签
+SUBDIRS = ./lib  ./API ./server ./tools
+
+define make_subdir
+	@for subdir in $(SUBDIRS) ; do \
+		( cd $$subdir && make $1 $(MAKE_FLAG); \
+			echo "[$$?] ----------------------"; ) \
+	done;
+endef
+
+all:
+	$(call make_subdir , all)
+
+clean:
+	$(call make_subdir , clean)

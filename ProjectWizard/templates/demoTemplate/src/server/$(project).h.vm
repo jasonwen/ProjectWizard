@@ -1,0 +1,24 @@
+/*
+ *  ${projectName}.h
+ *  usage:内部使用结构体和函数声明
+ *  Created on: ${createTime}
+ *  Author: ${author}
+ */
+
+#ifndef ${PROJECTNAME}_H_
+\#define ${PROJECTNAME}_H_
+
+#ifdef  __cplusplus
+extern "C"
+{
+#endif
+## "#[[" 和 "]]#" 之间的内容表示不进行替换，所以里面的内容不需要进行转义
+#[[
+#include <stdlib.h>
+#include <stdio.h>
+]]#
+
+##这里的#include需要进行转义
+\#include <stdint.h>
+
+#endif /* ${PROJECTNAME}_H_ */

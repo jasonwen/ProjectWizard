@@ -1,0 +1,25 @@
+/*
+##${xx}是内置变量
+ *  ${projectName}Svr.cpp
+ *  usage:
+ *  Created on: ${createTime}
+ *  Author: ${author}
+ */
+
+##这行是velocity的注释,需要对#include、#define #else等进行转义
+\#include "${projectName}.h"
+
+\#define MICRO_DEMO "hello"					 
+
+#ifdef __LP64__
+uint32_t abc;
+\#else
+unsigned long abc;
+#endif
+
+int main(int argc, char * argv[])
+{
+
+  printf("the projectName is:%s\n",${projectName});
+
+}
